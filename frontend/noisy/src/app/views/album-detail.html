@@ -9,7 +9,7 @@
             <p>{{album.year}}</p>
             <p>{{album.description}}</p>
 
-            <a [routerLink]="['/crear-tema', album.id]" class="btn btn-default" *ngIf="identity">Añadir canción</a>
+            <a [routerLink]="['/crear-tema', album.id]" class="btn btn-warning" *ngIf="identity">Añadir canción</a>
         </div>
     </div>
 
@@ -19,7 +19,7 @@
         <ul id="songs-list">
             <li *ngFor="let song of songs" class="song-item">
                 <div class="title">
-                    <a class="btn btn-success" (click)="startPlayer(song)">
+                    <a class="btn btn-warning" (click)="startPlayer(song)">
                         <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
                     </a>
                     {{song.number + '.' + song.name + ' - ' + song.duration}}
@@ -30,7 +30,7 @@
 
                     <div class="seguro seguro-song" *ngIf="confirmado == song.id">
                         <a (click)="onDeleteSong(song.id)" class="btn btn-danger">Eliminar</a>
-                        <a (click)="onCancelSong()" class="btn btn-primary">Cancelar</a>
+                        <a (click)="onCancelSong()" class="btn btn-warning">Cancelar</a>
                     </div>
                     <div class="clearfix"></div>
                 </div>

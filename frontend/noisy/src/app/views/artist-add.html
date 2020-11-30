@@ -30,7 +30,7 @@
             </p>
         </div>
 
-        <input type="submit" value="{{titulo}}" [disabled]="!formArtist.form.valid" class="btn btn-success" />
+        <input type="submit" value="{{titulo}}" [disabled]="!formArtist.form.valid" class="btn btn-warning" />
     </form>
 </div>
 <div class="col-lg-6" *ngIf="!identity || identity.role != 'ROLE_ADMIN'">
