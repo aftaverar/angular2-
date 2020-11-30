@@ -5,6 +5,9 @@ import {User} from './models/user';
 import {UserService} from './services/user.service';
 import {GLOBAL} from './services/global';
 
+
+declare var reproductor:any;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -41,7 +44,15 @@ export class AppComponent implements OnInit{
 
     console.log(this.identity);
     console.log(this.token);
+
+    
+
+    
   }
+
+  public rep(){
+    reproductor();
+  };
 
   public onSubmit(){
     console.log(this.user);
