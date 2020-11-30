@@ -1,103 +1,136 @@
-<hr/>
-<hr/>
-<!-- comprobar si identity existe y tiene algo dentro -->
-<div *ngIf="identity" class="navigation col-lg-1">
-    <h1 class="head-title">
-        <a [routerLink]="['/']"> {{title}}</a>
-    </h1>
-    <nav id="navigation">
-        <a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Buscar</a>
-        <a [routerLink]="['/artistas', 1]" [routerLinkActive]="['actived']"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Artistas</a>
-        <a href="#" [routerLinkActive]="['actived']"><span class="glyphicon glyphicon-book" aria-hidden="true"></span>Albums</a>
-    </nav>
+<div class="row mx-5 mt-2 mb-5 navbar navbar-expand-lg navbar-light bg-black">
+  <div class="row col-lg-2 mr-4">
+    <img class="avatar align-self-center mr-3" src="../../assets/img/logo.png" alt="logo Noisy">
+    <a class="navbar-brand text-white" [routerLink]="['/']">NOISY</a>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a type="button" class="btn btn-outline-warning mx-4" [routerLink]="['/artistas', 1]"
+          [routerLinkActive]="['actived']">Inicio</a>
+      </li>
+    </ul>
+  </div>
 
-    <nav id="user_logged">
-        <!-- para mostrar la imágen de usuario -->
-        <div class="user-image" *ngIf="user.image && user.image != 'null'">
-            <img id="image-logged" src="{{url + 'get-image-user/' + identity.image}}" />
-        </div>
-        <span id="identity_name">
-            {{identity.name}}<!--{{identity.surname}}-->
-        </span>
-        <a [routerLink]="['/mis-datos']" [routerLinkActive]="['actived']">
-            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Datos
+
+
+
+
+
+
+  <!--==parte derecha usuario==-->
+  <div class=" row col-lg-11 d-flex justify-content-end">
+    <ul class="navbar-nav">
+    <div class="user-image" *ngIf="user.image && user.image != 'null'">
+      <img id="image-logged" src="{{url + 'get-image-user/' + identity.image}}" class="image-podcast" />
+    </div>
+    <span id="identity_name">
+      {{identity.name}}
+    </span>
+    
+      <li class="nav-item active">
+        <a [routerLink]="['/mis-datos']" [routerLinkActive]="       ['actived']" class="btn btn-outline-warning mx-4">
+          Perfil
         </a>
-        <a (click)="logout()" class="btn-logout">
-            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Salir
+      </li>
+    </ul>
+    <ul class="navbar-nav mr-5 px-2">
+      <li class="nav-item active">
+        <a (click)="logout() " class="btn btn-outline-warning mx-4">
+          <span aria-hidden="true"></span> Log out
         </a>
-    </nav>
+      </li>
+    </ul>
+
+  </div>
 </div>
 
-<!--<div class="clearfix"></div>-->
+<div [class.hidden]="!identity" class="central col-lg-12">
+  <!--<p>Estas logueado a la app</p>-->
+  <router-outlet></router-outlet>
 
-<div [class.hidden]="!identity" class="central col-lg-11">
-    <!--<p>Estas logueado a la app</p>-->
-    <router-outlet></router-outlet>
+  <div class="clearfix"></div>
 
-    <div class="clearfix"></div>
-
-    <!-- el player -->
-    <player class="player" *ngIf="identity"></player>
+  <!-- el player -->
+  <player class="player" *ngIf="identity"></player>
 </div>
 
-<div class="col-lg-11" *ngIf="!identity">
+
+<div class="col-lg-12 row justify-content log" *ngIf="!identity">
+    <!--==login==-->
     <div class="col-lg-6">
-        <h3>Identificate</h3>
-        <div *ngIf="errorMessage">
-            <div class="alert alert-info">
-                <strong>Error</strong>{{errorMessage}}
+        <div class="row justify-content-center mx-0">
+            <div class="login-box ">
+                <div class="row justify-content-center mb-2">
+                    <img class="avatar mt-n5" src="../assets/img/logo1.png" alt="logo Noisy">
+                </div>
+                <h1>Iniciar sesion</h1>
+                <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+                    <div class="group">
+                        <input type="email" #email="ngModel" name="email" [(ngModel)]="user.email" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>correo</label>
+                    </div>
+
+                    <div class="group">
+                        <input type="password" #password="ngModel" name="password" [(ngModel)]="user.password" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Contraseña</label>
+                    </div>
+
+                    <input type="submit" value="Ingresar">
+                </form>
+
             </div>
         </div>
-        <!-- #loginForm para hacer un formulario de angular -->
-        <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-5">
-            <p>
-                <label>Correo:</label>
-                <!-- accede a la propriedad de component, user, para indicar que modifica el email -->
-                <input type="email" #email="ngModel" name="email" [(ngModel)]="user.email" class="form-control" required />
-        
-            </p>
-            <p>
-                <label>Contraseña:</label>
-                <input type="password" #password="ngModel" name="password" [(ngModel)]="user.password" class="form-control" required />
-            
-            </p>
-            <input type="submit" value="Entra" class="btn btn-primary" />
-        </form>
     </div>
 
-    <hr/>
-    <hr/>
-
+    <!--==registro==-->
     <div class="col-lg-6">
-        <h3>Registrate</h3>
-        <div *ngIf="alertRegister">
-            <div class="alert alert-info">
-                <strong>Error</strong>{{errorRegister}}
+        <div class="row justify-content-center mx-0">
+            <div class="login-box borde">
+                <div class="row justify-content-center mb-2">
+                    <img class="avatar mt-n5" src="../assets/img/logo1.png" alt="logo Noisy">
+                </div>
+                <h2 class="text-center">Registrate para grabar y escuchar los mejores podcast</h2><br>
+                <form #registerForm="ngForm" (ngSubmit)="onSubmitRegister()">
+
+                    <div class="group">
+                        <input type="text" #name="ngModel" name="name" [(ngModel)]="user_register.name" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Nombre</label>
+                    </div>
+
+                    <div class="group">
+                        <input type="text" #surname="ngModel" name="surname" [(ngModel)]="user_register.surname"
+                            required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Apellido</label>
+                    </div>
+
+                    <div class="group">
+                        <input type="email" #email="ngModel" name="email" [(ngModel)]="user_register.email" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Correo electronico</label>
+                    </div>
+
+                    <div class="group">
+                        <input type="password" #password="ngModel" name="password" [(ngModel)]="user_register.password"
+                            required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Contraseña</label>
+                    </div>
+
+                    <input type="submit" value="Registrarte" style="font-family: monospace;">
+                    <br>
+                    <p>Al registrarte, aceptas nuestras <a href="#">Condiciones</a>, la <a href="#">Politica de
+                            datos</a> y la <a href="#"> Politica de cookies</a></p>
+                </form>
             </div>
         </div>
-        <form #registerForm="ngForm" (ngSubmit)="onSubmitRegister()" class="col-lg-10">
-            <p>
-                <label>Nombre:</label>
-                <input type="text" name="ngModel" name="name" [(ngModel)]="user_register.name" class="form-control" required />
-                
-            </p>
-            <p>
-                <label>Apellido:</label>
-                <input type="text" #surname="ngModel" name="surname" [(ngModel)]="user_register.surname" class="form-control" required />
-                
-            </p>
-            <p>
-                <label>Correo:</label>
-                <!-- accede a la propriedad de component, user, para indicar que modifica el email -->
-                <input type="email" #email="ngModel" name="email" [(ngModel)]="user_register.email" class="form-control" required />
-               
-            </p>
-            <p>
-                <label>Contraseña:</label>
-                <input type="password" #password="ngModel" name="password" [(ngModel)]="user_register.password" class="form-control" required />
-                
-            </p>
-            <input type="submit" value="Registrate" class="btn btn-primary" />
-        </form>
     </div>
 </div>
