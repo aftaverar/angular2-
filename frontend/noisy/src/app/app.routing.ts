@@ -28,9 +28,9 @@ const appRoutes: Routes =[
     // },
     //componente cargado por defecto, vacio
     {path: '', component: HomeComponent},
-    {path: 'artists/:page', component: ArtistListComponent},
+    {path: 'artistas/:page', component: ArtistListComponent},
     {path: 'crear-artistas', component: ArtistAddComponent},
-    {path: 'editar-artistas', component: ArtistEditComponent},
+    {path: 'editar-artista/:id', component: ArtistEditComponent},
     {path: 'artista/:id', component: ArtistDetailComponent},
     {path: 'crear-album/:artist', component: AlbumAddComponent},
     {path: 'editar-album/:id', component: AlbumEditComponent},
