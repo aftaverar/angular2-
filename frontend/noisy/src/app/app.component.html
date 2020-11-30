@@ -1,5 +1,4 @@
-<hr/>
-<hr/>
+
 <!-- comprobar si identity existe y tiene algo dentro -->
 <div *ngIf="identity" class="navigation col-lg-1">
     <h1 class="head-title">
@@ -7,7 +6,7 @@
     </h1>
     <nav id="navigation">
         <a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Buscar</a>
-        <a [routerLink]="['/artistas', 1]" [routerLinkActive]="['actived']"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Artistas</a>
+        <a [routerLink]="['/artists', 1]" [routerLinkActive]="['actived']"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Artistas</a>
         <a href="#" [routerLinkActive]="['actived']"><span class="glyphicon glyphicon-book" aria-hidden="true"></span>Albums</a>
     </nav>
 
@@ -31,7 +30,7 @@
 <!--<div class="clearfix"></div>-->
 
 <div [class.hidden]="!identity" class="central col-lg-11">
-    <!--<p>Estas logueado a la app</p>-->
+    <p>Estas logueado a la app</p>
     <router-outlet></router-outlet>
 
     <div class="clearfix"></div>
