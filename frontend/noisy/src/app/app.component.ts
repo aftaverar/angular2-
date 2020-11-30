@@ -55,7 +55,7 @@ export class AppComponent implements OnInit{
         let identity = response.user;
         this.identity = identity;
 
-        if(!this.identity.id){
+        if(!this.identity._id){
           alert('El usuario no esta correctamente identificado');
         }else{
           //crear elemento en el logalstorage para tener al usuario sesión
@@ -123,34 +123,58 @@ export class AppComponent implements OnInit{
 
 
   //método de registro de usuarios 
-  onSubmitRegister(){
-    console.log(this.user_register);
+  // onSubmitRegister(){
+  //   console.log(this.user_register);
 
+  //   this._userService.register(this.user_register).subscribe(
+  //     response =>{
+  //       let user = response.user;
+  //       this.user_register = user;
+
+  //       if(!user._id){
+  //         this.alertRegister = 'Error al registrarse';
+  //       }else{
+  //         this.alertRegister = 'Registro realizado correctamente, identificate con ' 
+  //           + this.user_register.email;
+
+  //         //para vasiar el formulario y permitir a otro usuario en registrarse
+  //         this.user_register = new User('', '', '', '', '', 'ROLE_USER', '');
+  //       }
+  //     },
+  //     error =>{
+  //       var errorMessage = <any>error;
+
+  //       if(errorMessage != null){
+  //         //convertimos en obj json
+  //         var body = JSON.parse(error._body);
+
+  //         this.alertRegister = body.message;
+  //         console.log(error);
+  //       }
+  //     }
+  //   );
+  // }
+  onSubmitRegister(){
     this._userService.register(this.user_register).subscribe(
       response =>{
         let user = response.user;
         this.user_register = user;
-
-        if(!user.id){
+        if(!user._id){
           this.alertRegister = 'Error al registrarse';
         }else{
-          this.alertRegister = 'Registro realizado correctamente, identificate con ' 
-            + this.user_register.email;
-
-          //para vasiar el formulario y permitir a otro usuario en registrarse
-          this.user_register = new User('', '', '', '', '', 'ROLE_USER', '');
+          this.alertRegister = 'El registro ha sido exitoso';
+          this.user_register = new User('','','','','','ROLE_USER', '');
         }
       },
       error =>{
-        var errorMessage = <any>error;
-
-        if(errorMessage != null){
-          //convertimos en obj json
-          var body = JSON.parse(error._body);
-
-          this.errorMessage = body.message;
-          console.log(error);
-        }
+          var errorMessaje = <any>error;
+          if(errorMessaje != null){
+            var body = JSON.parse(error._body);
+            this.alertRegister = body.message;
+            console.log(error);         
+          }
+        
+  
       }
     );
   }
