@@ -320,3 +320,14 @@ color:#c29637;
     font-family: sans-serif;
     
 }
+.player{
+  background: #1c1c1c;
+  position: fixed;
+  width: 100%;
+  bottom:15px;
+  padding: 20px;  
+  margin-left: -15px;
+  border-left: 1px solid;
+  margin-bottom: 10px solid #1c1c1c;
+
+}
