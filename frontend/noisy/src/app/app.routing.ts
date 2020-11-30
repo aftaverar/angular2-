@@ -21,16 +21,16 @@ import {SongEditComponent} from './components/song-edit.component';
 
 //un array con todas las configuraciones
 const appRoutes: Routes =[
-    /*{
-        path: '',
-        redirectTo: '/artists/1',
-        pathMatch: 'full'
-    },*/
+    // {
+    //     path: '',
+    //     redirectTo: '/artists/1',
+    //     pathMatch: 'full'
+    // },
     //componente cargado por defecto, vacio
     {path: '', component: HomeComponent},
     {path: 'artistas/:page', component: ArtistListComponent},
     {path: 'crear-artistas', component: ArtistAddComponent},
-    {path: 'editar-artistas', component: ArtistEditComponent},
+    {path: 'editar-artista/:id', component: ArtistEditComponent},
     {path: 'artista/:id', component: ArtistDetailComponent},
     {path: 'crear-album/:artist', component: AlbumAddComponent},
     {path: 'editar-album/:id', component: AlbumEditComponent},

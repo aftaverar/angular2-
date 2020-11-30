@@ -1,10 +1,10 @@
 <div class="head-page" *ngIf="identity">
     <h1>{{titulo}}</h1>
-    <a [routerLink]="['/crear-artista']" *ngIf="identity && identity.role == 'ROLE_ADMIN'" class="btn btn-default">Añadir artista</a>
+    <a [routerLink]="['/crear-artistas']" *ngIf="identity && identity.role == 'ROLE_ADMIN'" class="btn btn-default">Añadir artista</a>
 
     <ul class="pagination pull-right">
-        <li><a [routerLink]="['/artistas', prev_page]">&laquo;</a></li>
-        <li><a [routerLink]="['/artistas', next_page]">&raquo;</a></li>
+        <li><a [routerLink]="['/artists', prev_page]">&laquo;</a></li>
+        <li><a [routerLink]="['/artists', next_page]">&raquo;</a></li>
     </ul>
 </div>
 

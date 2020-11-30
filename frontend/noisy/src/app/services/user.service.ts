@@ -43,7 +43,8 @@ export class UserService{
     register(user_to_register){
         //transformamos el objeto en string
         let json = JSON.stringify(user_to_register);
-        let params = json;
+        let params = JSON.stringify(user_to_register);  
+        // let params = json;
 
         let headers = new Headers({'Content-Type':'application/json'});
 

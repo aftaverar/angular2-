@@ -27,7 +27,7 @@ export class ArtistService{
         });
 
         let options = new RequestOptions({headers: headers});
-        return this._http.get(this.url + 'artists' + page, options)
+        return this._http.get(this.url + 'artists/' + page, options)
                     .map(res => res.json());
     }
 
@@ -38,7 +38,7 @@ export class ArtistService{
         });
 
         let options = new RequestOptions({headers: headers});
-        return this._http.get(this.url + 'artist' + id, options)
+        return this._http.get(this.url + 'artist/' + id, options)
                     .map(res => res.json());
     }
 
