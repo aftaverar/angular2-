@@ -30,11 +30,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 	text-align: right;
 }
 
-.image-podcast{
-    height:180px;
-    width: 180px;
-    border-radius: 8px;
-  }
+
 
     /*modificacion a colores, letra y fondo de la nav bar*/
     .bg-black{

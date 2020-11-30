@@ -10,7 +10,7 @@ import {GLOBAL} from '../services/global';
                 <img id="play-image-album" src="{{url + 'get-image-album/' + song.album.image}}"/>
             </span>
             <span *ngIf="!song.album">
-                <img id="play-image-album" src="assets/image/default.jpg"/>
+                <img id="play-image-album" src="assets/img/podcast/004-1.jpg"/>
             </span>
         </div> 
         <div class="audio-file">
